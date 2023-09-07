@@ -3,7 +3,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Lexico {
-    public static String exp = "z-12-2*-x+32/45-3*2+3(78*23/6);";
+    public static String exp = "Z-12-2*-x+32/45-3*2+3(78*23/6);";
     public static int i = 0;
     public static int filas = exp.length() - 2;
     public static String[][] m = new String[filas][3]; 
@@ -24,7 +24,7 @@ public class Lexico {
                     || str.equals(")")) {
                 m[i][1] = operadores.get(m[i][2]) + " ";
                 m[i][0] = "Operador ";
-            } else if (str.equals("x") || str.equals("y") || str.equals("z")) {
+            } else if (str.toLowerCase().equals("x") || str.toLowerCase().equals("y") || str.toLowerCase().equals("z")) {
                 m[i][1] = "Var ";
                 m[i][0] = ((Object) m[i][2]).getClass().getSimpleName() + " ";
             } else if (str.equals(";")) {
