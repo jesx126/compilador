@@ -5,9 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Lexico {
-    public static String exp = "-12.2$cgf-2+32/45-3*2+3(78*23/6)-32.123;";
+    public static String exp = " ";
     public static int i = 0;
-    public static int filas = exp.length() - 2;
+    public static int filas = 100;
     public static String[][] m = new String[filas][3]; 
     public static Map<String, String> operadores = new HashMap<>();
     public static Pattern patron = Pattern.compile("[a-z]");
