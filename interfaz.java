@@ -31,7 +31,7 @@ public class interfaz extends JFrame {
         model.addColumn("Tipo");
         model.addColumn("Nombre");
         model.addColumn("Dato");
-        textField.setVisible(rootPaneCheckingEnabled);
+        //textField.setVisible(rootPaneCheckingEnabled);
         p.add(textField, BorderLayout.NORTH);
         p.add(boton, BorderLayout.EAST);
         p.add(new JScrollPane(tabla), BorderLayout.CENTER);
