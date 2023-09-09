@@ -20,7 +20,7 @@ public class interfaz extends JFrame {
         miAplicacion.setVisible(true);
         miAplicacion.setBounds(0, 0, 500, 550);
         miAplicacion.setLocationRelativeTo(null);
-        miAplicacion.setDefaultCloseOperation(miAplicacion.EXIT_ON_CLOSE);
+        miAplicacion.setDefaultCloseOperation(EXIT_ON_CLOSE);
         miAplicacion.getContentPane().add(p);
         textField.setPreferredSize(new Dimension(200, 20));
         boton = new JButton("Analizar");

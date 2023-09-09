@@ -25,7 +25,7 @@ public class Lexico {
         operadores.put(")", "Parentesis de cierre");
         operadores.put(";", "Fin");
         operadores.put("=", "Igual");
-        StringTokenizer toknum = new StringTokenizer(exp, "/-*+()=;abcdefgijklmnñopqrstuvwxyz", true);
+        StringTokenizer toknum = new StringTokenizer(exp, "/-*+()=;aAbBcCdDeEfFgGhHiIjJkKlLmMnNñÑoOpPqQrRsStTuUvVwWxXyYzZ", true);
         while (toknum.hasMoreElements()) {
             String str = toknum.nextToken();
             String stres = str.toLowerCase();
