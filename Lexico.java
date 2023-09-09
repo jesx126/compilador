@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Lexico {
-    public static String exp = "-12.2cgf-2+32/45-3*2+3(78*23/6)-32.123;";
+    public static String exp = "-12.2$cgf-2+32/45-3*2+3(78*23/6)-32.123;";
     public static int i = 0;
     public static int filas = exp.length() - 2;
     public static String[][] m = new String[filas][3]; 
@@ -43,12 +43,14 @@ public class Lexico {
                 m[i][1] = operadores.get(m[i][2]) + " ";
                 m[i][0] = "Operador ";
             } else if(mat2.matches()){
-                //int n = Integer.parseInt(m[i][2]);
                 m[i][1] = "Num ";
                 m[i][0] = "Integer ";
             }else if(mat3.matches()){
                 m[i][1] = "Num ";
                 m[i][0] = "Decimal ";
+            }else{
+                m[i][1] = "Unknow ";
+                m[i][0] = "Unknow ";
             }
             i++;
         }
@@ -64,6 +66,5 @@ public class Lexico {
             }
             System.out.print(" \n");
         }
-        
     }
 }
