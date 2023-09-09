@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class interfaz extends JFrame {
+    
     public JPanel p = new JPanel();
     // public JTextField textField;
     public JButton boton;
@@ -22,7 +23,6 @@ public class interfaz extends JFrame {
         miAplicacion.setDefaultCloseOperation(miAplicacion.EXIT_ON_CLOSE);
         miAplicacion.getContentPane().add(p);
         textField.setPreferredSize(new Dimension(200, 20));
-
         boton = new JButton("Analizar");
         // Agrega los componentes al JPanel
 
@@ -31,6 +31,7 @@ public class interfaz extends JFrame {
         model.addColumn("Tipo");
         model.addColumn("Nombre");
         model.addColumn("Dato");
+        textField.setVisible(rootPaneCheckingEnabled);
         p.add(textField, BorderLayout.NORTH);
         p.add(boton, BorderLayout.EAST);
         p.add(new JScrollPane(tabla), BorderLayout.CENTER);
@@ -38,6 +39,7 @@ public class interfaz extends JFrame {
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 namas++;
                 // Aquí puedes realizar alguna acción con el texto del textField
                 String texto = textField.getText();
@@ -58,7 +60,6 @@ public class interfaz extends JFrame {
                 for (String[] row : Lexico.m) {
                     model.addRow(row);
                 }
-
             }
         });
     }

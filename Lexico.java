@@ -24,7 +24,8 @@ public class Lexico {
         operadores.put("(", "Parentesis de apertura");
         operadores.put(")", "Parentesis de cierre");
         operadores.put(";", "Fin");
-        StringTokenizer toknum = new StringTokenizer(exp, "/-*+();abcdefgijklmnñopqrstuvwxyz", true);
+        operadores.put("=", "Igual");
+        StringTokenizer toknum = new StringTokenizer(exp, "/-*+()=;abcdefgijklmnñopqrstuvwxyz", true);
         while (toknum.hasMoreElements()) {
             String str = toknum.nextToken();
             String stres = str.toLowerCase();
@@ -33,7 +34,7 @@ public class Lexico {
             mat2 = patron2.matcher(stres);
             mat3 = patron3.matcher(stres);
             if (str.equals("+") || str.equals("/") || str.equals("-") || str.equals("*") || str.equals("(")
-                    || str.equals(")")) {
+                    || str.equals(")") || str.equals("=")) {
                 m[i][1] = operadores.get(m[i][2]) + " ";
                 m[i][0] = "Operador ";
             } else if (mat.matches()) {
