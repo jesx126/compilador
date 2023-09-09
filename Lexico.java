@@ -1,13 +1,19 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Lexico {
-    public static String exp = "Z-12-2*-x+32/45-3*2+3(78*23/6);";
+    public static String exp = "-12cgf-2+32/45-3*2+3(78*23/6);";
     public static int i = 0;
     public static int filas = exp.length() - 2;
     public static String[][] m = new String[filas][3]; 
     public static Map<String, String> operadores = new HashMap<>();
+    public static Pattern patron = Pattern.compile("[a-z]");
+    public static Pattern patron2 = Pattern.compile("[0-9]+");
+    public static Matcher mat;
+    public static Matcher mat2;
     public static void pros() {
         operadores.put("/", "División");
         operadores.put("-", "Resta");
@@ -16,24 +22,30 @@ public class Lexico {
         operadores.put("(", "Parentesis de apertura");
         operadores.put(")", "Parentesis de cierre");
         operadores.put(";", "Fin");
-        StringTokenizer toknum = new StringTokenizer(exp, "/-*+()", true);
+        StringTokenizer toknum = new StringTokenizer(exp, "/-*+()abcdefgijklmnñopqrstuvwxyz", true);
         while (toknum.hasMoreElements()) {
             String str = toknum.nextToken();
-            m[i][2] = str;
+            String stres = str.toLowerCase();
+            m[i][2] = stres;
+            mat = patron.matcher(stres);
+            mat2 = patron2.matcher(stres);
             if (str.equals("+") || str.equals("/") || str.equals("-") || str.equals("*") || str.equals("(")
                     || str.equals(")")) {
                 m[i][1] = operadores.get(m[i][2]) + " ";
                 m[i][0] = "Operador ";
-            } else if (str.toLowerCase().equals("x") || str.toLowerCase().equals("y") || str.toLowerCase().equals("z")) {
+            } else if (mat.matches()) {
                 m[i][1] = "Var ";
                 m[i][0] = ((Object) m[i][2]).getClass().getSimpleName() + " ";
             } else if (str.equals(";")) {
                 m[i][1] = operadores.get(m[i][2]) + " ";
                 m[i][0] = "Operador ";
-            } else {
-                int n = Integer.parseInt(m[i][2]);
+            } else if(mat2.matches()){
+                //int n = Integer.parseInt(m[i][2]);
                 m[i][1] = "Num ";
-                m[i][0] = ((Object) n).getClass().getSimpleName() + " ";
+                m[i][0] = "Integer ";
+            }else{
+                m[i][1] = "DES ";
+                m[i][0] = "DES ";
             }
             i++;
         }
