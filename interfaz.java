@@ -20,8 +20,6 @@ public class interfaz extends JFrame implements ActionListener{
         model.addColumn("Tipo");
         model.addColumn("Nombre");
         model.addColumn("Dato");
-        p.setBackground(Color.black);
-        p.setLayout(new GridLayout(2, 5, 15, 5));
     }
     public interfaz(){
         initcomp();
@@ -32,9 +30,6 @@ public class interfaz extends JFrame implements ActionListener{
         p.add(boton, BorderLayout.EAST);
         p.add(new JScrollPane(tabla), BorderLayout.CENTER);
     }
-
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         namas++;

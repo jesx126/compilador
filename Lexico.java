@@ -55,17 +55,5 @@ public class Lexico {
             }
             i++;
         }
-        System.out.println("\nExpresión: " + exp + "\n");
-        for (int j = 0; j < filas; j++) {
-
-            for (int k = 0; k < 3; k++) {
-                if (m[j][k] == null) {
-                    j = filas - 1;
-                } else {
-                    System.out.print(m[j][k]);
-                }
-            }
-            System.out.print(" \n");
-        }
     }
 }
