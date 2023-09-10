@@ -4,45 +4,42 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class interfaz extends JFrame {
-    
+public class interfaz extends JFrame implements ActionListener{
     public JPanel p = new JPanel();
-    // public JTextField textField;
     public JButton boton;
     public JTable tabla;
     public DefaultTableModel model;
-    public static JTextField textField = new JTextField();
+    public static JTextField campo1;
     int namas = 0;
-
     public void initcomp() {
-        interfaz miAplicacion = new interfaz();
-        miAplicacion.pack();
-        miAplicacion.setVisible(true);
-        miAplicacion.setBounds(0, 0, 500, 550);
-        miAplicacion.setLocationRelativeTo(null);
-        miAplicacion.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        miAplicacion.getContentPane().add(p);
-        textField.setPreferredSize(new Dimension(200, 20));
         boton = new JButton("Analizar");
-        // Agrega los componentes al JPanel
-
+        campo1 = new JTextField();
+        campo1.setSize(20,20);
         model = new DefaultTableModel();
         tabla = new JTable(model);
         model.addColumn("Tipo");
         model.addColumn("Nombre");
         model.addColumn("Dato");
-        //textField.setVisible(rootPaneCheckingEnabled);
-        p.add(textField, BorderLayout.NORTH);
+        p.setBackground(Color.black);
+        p.setLayout(new GridLayout(2, 5, 15, 5));
+    }
+    public interfaz(){
+        initcomp();
+        this.setVisible(true);
+        boton.addActionListener(this);
+        p = (JPanel) this.getContentPane();
+        p.add(campo1, BorderLayout.NORTH);
         p.add(boton, BorderLayout.EAST);
         p.add(new JScrollPane(tabla), BorderLayout.CENTER);
-        p.setBackground(Color.black);
-        boton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                namas++;
+    }
+
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        namas++;
                 // Aquí puedes realizar alguna acción con el texto del textField
-                String texto = textField.getText();
+                String texto = campo1.getText();
                 // Por ejemplo, puedes agregar el texto a la tabla
                 // model.addRow(new Object[] { texto });
                 Lexico.exp = texto;
@@ -60,8 +57,7 @@ public class interfaz extends JFrame {
                 for (String[] row : Lexico.m) {
                     model.addRow(row);
                 }
-            }
-        });
+        
     }
 
 }
