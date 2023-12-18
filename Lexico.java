@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 public class Lexico {
     public static String exp = " ";
@@ -16,6 +17,7 @@ public class Lexico {
     public static Matcher mat;
     public static Matcher mat2;
     public static Matcher mat3;
+    public static int parentesis=0;
     public static void pros() {
         operadores.put("/", "División");
         operadores.put("-", "Resta");
@@ -35,6 +37,7 @@ public class Lexico {
             mat3 = patron3.matcher(stres);
             if (str.equals("+") || str.equals("/") || str.equals("-") || str.equals("*") || str.equals("(")
                     || str.equals(")") || str.equals("=")) {
+                parentesis=metodos.parent(str);
                 m[i][1] = operadores.get(m[i][2]) + " ";
                 m[i][0] = "Operador ";
             } else if (mat.matches()) {
@@ -55,5 +58,31 @@ public class Lexico {
             }
             i++;
         }
+        metodos.est_err();
     }
+
+
+
+}
+
+
+class metodos{
+    //detección de paréntesis por conteo
+public static int parent(String str){
+     if(str.equals("(")){Lexico.parentesis=Lexico.parentesis+1;}else if(str.equals(")")){Lexico.parentesis=Lexico.parentesis-1;}else{}
+    return Lexico.parentesis;
+}
+
+//mensajes de error
+public static void est_err(){
+if(Lexico.parentesis!=0){   
+        if(Lexico.parentesis>0){
+            JOptionPane.showMessageDialog(null, "Error: faltan paréntesis de cierre", "Error",1);
+        }else if(Lexico.parentesis<0){
+            JOptionPane.showMessageDialog(null, "Error: faltan paréntesis de apertura", "ERROR", 1);
+        }
+    }
+        Lexico.parentesis=0;
+}
+
 }
