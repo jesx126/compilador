@@ -77,15 +77,32 @@ public static int div_0(String m[][]){
 int flag=0;  
     for(int i=0;i<m.length;i++){
         if("/".equals(m[i][2])){
+            if(i-1>=0){
            if("0".equals(m[i-1][2]) || "0".equals(m[i+1][2])){
             flag=1;
-           }
+           }}
+        }else{
         }
-        
     }
     return flag;
 
 }
+    //Detección de operadores consecutivos
+public static int op_c(String m[][]){
+    int flag=0;
+    for(int i=0;i<m.length;i++){
+        if("+".equals(m[i][2]) || "-".equals(m[i][2]) || "/".equals(m[i][2]) || "*".equals(m[i][2])){
+            if(i-1>=0){
+            if("Num ".equals(m[i-1][1]) && "Num ".equals(m[i+1][1]) || ")".equals(m[i-1][2]) && "(".equals(m[i+1][2])
+            || ")".equals(m[i-1][2]) && "Num ".equals(m[i+1][1]) || "Num ".equals(m[i-1][1]) && "(".equals(m[i+1][2])){
+            }else{
+                flag=1;
+            }
+             }else{flag=1;}
+            }
+        }
+        return flag;
+    }
 
 //mensajes de error
 public static void est_err(String m[][]){
@@ -99,6 +116,9 @@ if(Lexico.parentesis!=0){
         Lexico.parentesis=0;
 if((div_0(m))==1){
     JOptionPane.showMessageDialog(null, "Error: divición por cero", "Error",1);
+    }
+if((op_c(m))==1){
+    JOptionPane.showMessageDialog(null, "Error: operadores sin operandos", "Error",1);
 }
 }
 
