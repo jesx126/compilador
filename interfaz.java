@@ -1,15 +1,18 @@
 import java.awt.*;
 import javax.swing.*;
+import java.applet.Applet;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class interfaz extends JFrame implements ActionListener{
     public JPanel p = new JPanel();
+    public JPanel p2 = new JPanel();
     public JButton boton;
     public JTable tabla;
     public DefaultTableModel model;
     public static JTextField campo1;
+    public static TextArea t1;
     int namas = 0;
     public void initcomp() {
         boton = new JButton("Analizar");
@@ -20,6 +23,7 @@ public class interfaz extends JFrame implements ActionListener{
         model.addColumn("Tipo");
         model.addColumn("Nombre");
         model.addColumn("Dato");
+        t1 = new TextArea( "",5,10 );
     }
     public interfaz(){
         initcomp();
@@ -29,6 +33,10 @@ public class interfaz extends JFrame implements ActionListener{
         p.add(campo1, BorderLayout.NORTH);
         p.add(boton, BorderLayout.EAST);
         p.add(new JScrollPane(tabla), BorderLayout.CENTER);
+        p2=(JPanel) this.getContentPane();
+        p2.add(t1,BorderLayout.SOUTH);
+        t1.setEditable( false );
+        t1.setForeground(Color.RED);;
     }
     @Override
     public void actionPerformed(ActionEvent e) {

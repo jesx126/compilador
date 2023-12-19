@@ -117,19 +117,33 @@ class metodos {
 
     // mensajes de error
     public static void est_err(String m[][]) {
+        int c_e=0;
+        String texto="";
         if (Lexico.parentesis != 0) {
             if (Lexico.parentesis > 0) {
-                JOptionPane.showMessageDialog(null, "Error: faltan paréntesis de cierre", "Error", 1);
+                JOptionPane.showMessageDialog(null, "Error: faltan paréntesis de cierre", "Error", 2);
+                c_e++;
+                texto=interfaz.t1.getText();
+                interfaz.t1.setText(texto+"\n"+"Error: faltan paréntesis de cierre "+"E: "+c_e);
             } else if (Lexico.parentesis < 0) {
-                JOptionPane.showMessageDialog(null, "Error: faltan paréntesis de apertura", "ERROR", 1);
+                JOptionPane.showMessageDialog(null, "Error: faltan paréntesis de apertura", "ERROR", 2);
+                c_e++;
+                texto=interfaz.t1.getText();
+                interfaz.t1.setText(texto+"\n"+"Error: faltan paréntesis de apertura "+"E: "+c_e);
             }
         }
         Lexico.parentesis = 0;
         if ((div_0(m)) == 1) {
-            JOptionPane.showMessageDialog(null, "Error: divición por cero", "Error", 1);
+            JOptionPane.showMessageDialog(null, "Error: divición por cero", "Error", 2);
+            c_e++;
+            texto=interfaz.t1.getText();
+            interfaz.t1.setText(texto+"\n"+"Error: Divición por cero "+"E: "+c_e);
         }
         if ((op_c(m)) == 1) {
-            JOptionPane.showMessageDialog(null, "Error: operadores sin operandos", "Error", 1);
+            c_e++;
+            JOptionPane.showMessageDialog(null, "Error: operadores sin operandos", "Error", 2);
+            texto=interfaz.t1.getText();
+            interfaz.t1.setText(texto+"\n"+"Error: operadores sin operandos "+"E: "+c_e);
         }
     }
 
