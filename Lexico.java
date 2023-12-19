@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class Lexico {
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
     public static String exp = " ";
     public static int i = 0;
     public static int filas = 100;
@@ -18,7 +20,7 @@ public class Lexico {
     public static Matcher mat2;
     public static Matcher mat3;
     public static int parentesis = 0;
-
+    
     public static void pros() {
         operadores.put("/", "División");
         operadores.put("-", "Resta");
@@ -117,33 +119,34 @@ class metodos {
 
     // mensajes de error
     public static void est_err(String m[][]) {
-        int c_e=0;
-        String texto="";
+        int c_e = 0;
+        String texto = "";
         if (Lexico.parentesis != 0) {
             if (Lexico.parentesis > 0) {
                 JOptionPane.showMessageDialog(null, "Error: faltan paréntesis de cierre", "Error", 2);
                 c_e++;
-                texto=interfaz.t1.getText();
-                interfaz.t1.setText(texto+"\n"+"Error: faltan paréntesis de cierre "+"E: "+c_e);
+                texto = interfaz.t1.getText();
+                interfaz.t1.setText(texto + "\n" + "Error: faltan paréntesis de cierre " + "E: " + c_e);
             } else if (Lexico.parentesis < 0) {
                 JOptionPane.showMessageDialog(null, "Error: faltan paréntesis de apertura", "ERROR", 2);
                 c_e++;
-                texto=interfaz.t1.getText();
-                interfaz.t1.setText(texto+"\n"+"Error: faltan paréntesis de apertura "+"E: "+c_e);
+                texto = interfaz.t1.getText();
+                interfaz.t1.setText(texto + "\n" + "Error: faltan paréntesis de apertura " + "E: " + c_e);
             }
         }
         Lexico.parentesis = 0;
         if ((div_0(m)) == 1) {
             JOptionPane.showMessageDialog(null, "Error: divición por cero", "Error", 2);
             c_e++;
-            texto=interfaz.t1.getText();
-            interfaz.t1.setText(texto+"\n"+"Error: Divición por cero "+"E: "+c_e);
+            texto = interfaz.t1.getText();
+            interfaz.t1.setText(texto + "\n" + "Error: Divición por cero " + "E: " + c_e);
         }
         if ((op_c(m)) == 1) {
+            
             c_e++;
             JOptionPane.showMessageDialog(null, "Error: operadores sin operandos", "Error", 2);
-            texto=interfaz.t1.getText();
-            interfaz.t1.setText(texto+"\n"+"Error: operadores sin operandos "+"E: "+c_e);
+            texto = interfaz.t1.getText();
+            interfaz.t1.setText(texto + "\n" + "Error: operadores sin operandos " +"E: "+c_e);
         }
     }
 
