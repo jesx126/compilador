@@ -6,6 +6,5 @@ public class main {
         miAplicacion.setBounds(0, 0, 750, 700);
         miAplicacion.setLocationRelativeTo(null);
         miAplicacion.setDefaultCloseOperation(miAplicacion.EXIT_ON_CLOSE);
-	system.out.print("esto es una prueba");
     }
 }
